@@ -1945,8 +1945,8 @@
         });
 
         // Rate limit: load with .val() so the shared modal shows each proxy's saved value (#1107)
-        editor.find(".RateLimit").off("change.ratelimit");
-        editor.find(".RequireRateLimit").off("change.ratelimit");
+        editor.find(".RateLimit").off("change");
+        editor.find(".RequireRateLimit").off("change");
         if (subd.RequireRateLimit) {
             editor.find(".RequireRateLimit").prop("checked", true);
             editor.find(".RateLimit").parent().removeClass("disabled");
@@ -1971,7 +1971,7 @@
             saveProxyInlineEdit(uuid);
         }
 
-        editor.find(".RequireRateLimit").on("change.ratelimit", function() {
+        editor.find(".RequireRateLimit").on("change", function() {
             if ($(this).is(":checked")) {
                 editor.find(".RateLimit").parent().removeClass("disabled");
             } else {
@@ -1984,7 +1984,7 @@
             }
             saveProxyInlineEdit(uuid);
         });
-        editor.find(".RateLimit").val(subd.RateLimit).on("change.ratelimit", rateLimitChangeEvent);
+        editor.find(".RateLimit").val(subd.RateLimit).on("change", rateLimitChangeEvent);
 
         // CAPTCHA Gating
         if (subd.RequireCaptcha) {

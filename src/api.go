@@ -113,6 +113,12 @@ func RegisterAuthenticationHandlerAPIs(authRouter *auth.RouterDef) {
 	authRouter.HandleFunc("/api/sso/OAuth2", oauth2Router.HandleSetOAuth2Settings)
 	authRouter.HandleFunc("/api/sso/zorxauth/provider", zorxAuthRouter.HandleAuthProviderSettings)
 	authRouter.HandleFunc("/api/sso/zorxauth/gateway", zorxAuthRouter.HandleGatewaySettings)
+
+	// Login page branding customization
+	authRouter.HandleFunc("/api/sso/zorxauth/customization", zorxAuthRouter.HandleCustomizationSettings)
+	authRouter.HandleFunc("/api/sso/zorxauth/customization/upload", zorxAuthRouter.HandleCustomizationUpload)
+	authRouter.HandleFunc("/api/sso/zorxauth/customization/reset", zorxAuthRouter.HandleCustomizationReset)
+	authRouter.HandleFunc("/api/sso/zorxauth/customization/preview", zorxAuthRouter.HandleCustomizationPreview)
 }
 
 // Register ZorxAuth user management APIs separately from generic SSO provider settings routes
